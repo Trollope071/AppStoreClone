@@ -16,6 +16,7 @@
 		62C29F2F29C9D7ED003A380A /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C29F2E29C9D7ED003A380A /* BaseTabBarController.swift */; };
 		62C29F3229C9F97D003A380A /* AppsSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C29F3129C9F97D003A380A /* AppsSearchController.swift */; };
 		62C29F3529C9FDFA003A380A /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C29F3429C9FDFA003A380A /* SearchResultCell.swift */; };
+		62C29F3829CA0BCD003A380A /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C29F3729CA0BCD003A380A /* VerticalStackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		62C29F2E29C9D7ED003A380A /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		62C29F3129C9F97D003A380A /* AppsSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsSearchController.swift; sourceTree = "<group>"; };
 		62C29F3429C9FDFA003A380A /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
+		62C29F3729CA0BCD003A380A /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 		62C29F1929C9D0A5003A380A /* AppStoreClone */ = {
 			isa = PBXGroup;
 			children = (
+				62C29F3629CA076A003A380A /* Helpers */,
 				62C29F3329C9FD94003A380A /* View */,
 				62C29F3029C9F945003A380A /* Controller */,
 				62C29F1A29C9D0A5003A380A /* AppDelegate.swift */,
@@ -90,6 +93,14 @@
 				62C29F3429C9FDFA003A380A /* SearchResultCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		62C29F3629CA076A003A380A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				62C29F3729CA0BCD003A380A /* VerticalStackView.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,6 +180,7 @@
 				62C29F3229C9F97D003A380A /* AppsSearchController.swift in Sources */,
 				62C29F3529C9FDFA003A380A /* SearchResultCell.swift in Sources */,
 				62C29F1D29C9D0A5003A380A /* SceneDelegate.swift in Sources */,
+				62C29F3829CA0BCD003A380A /* VerticalStackView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
