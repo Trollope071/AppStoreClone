@@ -13,6 +13,7 @@
 		62C29F2229C9D0A5003A380A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62C29F2029C9D0A5003A380A /* Main.storyboard */; };
 		62C29F2429C9D0A6003A380A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62C29F2329C9D0A6003A380A /* Assets.xcassets */; };
 		62C29F2729C9D0A6003A380A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62C29F2529C9D0A6003A380A /* LaunchScreen.storyboard */; };
+		62C29F2F29C9D7ED003A380A /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C29F2E29C9D7ED003A380A /* BaseTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		62C29F2329C9D0A6003A380A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		62C29F2629C9D0A6003A380A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		62C29F2829C9D0A6003A380A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		62C29F2E29C9D7ED003A380A /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				62C29F1A29C9D0A5003A380A /* AppDelegate.swift */,
 				62C29F1C29C9D0A5003A380A /* SceneDelegate.swift */,
 				62C29F1E29C9D0A5003A380A /* ViewController.swift */,
+				62C29F2E29C9D7ED003A380A /* BaseTabBarController.swift */,
 				62C29F2029C9D0A5003A380A /* Main.storyboard */,
 				62C29F2329C9D0A6003A380A /* Assets.xcassets */,
 				62C29F2529C9D0A6003A380A /* LaunchScreen.storyboard */,
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62C29F2F29C9D7ED003A380A /* BaseTabBarController.swift in Sources */,
 				62C29F1F29C9D0A5003A380A /* ViewController.swift in Sources */,
 				62C29F1B29C9D0A5003A380A /* AppDelegate.swift in Sources */,
 				62C29F1D29C9D0A5003A380A /* SceneDelegate.swift in Sources */,
