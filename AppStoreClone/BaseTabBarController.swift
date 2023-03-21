@@ -16,27 +16,38 @@ class BaseTabBarController: UITabBarController {
         view.backgroundColor = .white
         tabBar.backgroundColor = .white
         
-        let redViewController = UIViewController()
-        redViewController.view.backgroundColor = .white
-        redViewController.navigationItem.title = "Apps"
-        let redNavController = UINavigationController(rootViewController: redViewController)
-        redNavController.tabBarItem.title = "Apps"
-        redNavController.tabBarItem.image = UIImage(named: "apps")
-        redNavController.navigationBar.prefersLargeTitles = true
+        let todayController = UIViewController()
+        todayController.navigationItem.title = "Today"
+        let todayNavController = UINavigationController(rootViewController: todayController)
+        todayNavController.tabBarItem.title = "Today"
+        todayNavController.tabBarItem.image = UIImage(named: "today_icon")
+        todayNavController.navigationBar.prefersLargeTitles = true
         
         
-        let blueViewController = UIViewController()
-        blueViewController.navigationItem.title = "Search"
-        let blueNavController = UINavigationController(rootViewController: blueViewController)
-        blueNavController.tabBarItem.title = "Search"
-        blueNavController.tabBarItem.image = UIImage(named: "search")
-        blueNavController.navigationBar.prefersLargeTitles = true
+        let appsViewController = UIViewController()
+        appsViewController.navigationItem.title = "Apps"
+        let appsNavController = UINavigationController(rootViewController: appsViewController)
+        appsNavController.tabBarItem.title = "Apps"
+        appsNavController.tabBarItem.image = UIImage(named: "apps")
+        appsNavController.navigationBar.prefersLargeTitles = true
+        
+        
+        let searchViewController = UIViewController()
+        searchViewController.navigationItem.title = "Search"
+        let searchNavController = UINavigationController(rootViewController: searchViewController)
+        searchNavController.tabBarItem.title = "Search"
+        searchNavController.tabBarItem.image = UIImage(named: "search")
+        searchNavController.navigationBar.prefersLargeTitles = true
     
         
         viewControllers = [
-            redNavController,
-            blueNavController
+            todayNavController,
+            appsNavController,
+            searchNavController
         ]
         
+        
     }
+    
+    
 }
