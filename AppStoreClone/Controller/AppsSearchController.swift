@@ -8,22 +8,62 @@
 import UIKit
 import SDWebImage
 
-class AppsSearchController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class AppsSearchController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
     
     fileprivate let cellId = "id1234"
+    
+    fileprivate var appResults = [Result]()
+    
+    fileprivate let searchController = UISearchController(searchResultsController: nil)
+    
+    fileprivate let enterSearchTermLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Please enter search term above..."
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        return label
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fetchItunesApps()
         collectionView.register(SearchResultCell.self, forCellWithReuseIdentifier: cellId)
+        
+        view.addSubview(enterSearchTermLabel)
+        enterSearchTermLabel.centerInSuperview()
+        
+        setupSearchBar()
         
     }
     
-    fileprivate var appResults = [Result]()
+    var timer: Timer?
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        //delay for search
+        
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { _ in
+            Service.shared.fetchApps(searchTerm: searchText) { res, err in
+                self.appResults = res
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            }
+        })
+        
+        
+    }
+    
+    fileprivate func setupSearchBar() {
+        definesPresentationContext = true
+        navigationItem.searchController = self.searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self
+    }
     
     fileprivate func fetchItunesApps() {
-        Service.shared.fetchApps { results, err in
+        Service.shared.fetchApps(searchTerm: "Twitter") { results, err in
             
             if let err = err {
                 print("Failed to fetch apps:", err)
@@ -42,6 +82,7 @@ class AppsSearchController: UICollectionViewController, UICollectionViewDelegate
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        enterSearchTermLabel.isHidden = appResults.count != 0
         return appResults.count
     }
     
