@@ -14,11 +14,14 @@ class AppsSearchController: UICollectionViewController, UICollectionViewDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.register(SearchResultCell.self, forCellWithReuseIdentifier: cellId)
-        
         fetchItunesApps()
+        collectionView.register(SearchResultCell.self, forCellWithReuseIdentifier: cellId)
+                
         
     }
+    
+    fileprivate var appResults = [Result]()
+     
     
     fileprivate func fetchItunesApps() {
         let urlString = "https://itunes.apple.com/search?term=instagram&entity=software"
@@ -38,11 +41,16 @@ class AppsSearchController: UICollectionViewController, UICollectionViewDelegate
             
             do {
                 let searchResult =  try JSONDecoder().decode(SearchResult.self, from: data)
+                self.appResults = searchResult.results
                 
-                searchResult.results.forEach { print($0.trackName, $0.primaryGenreName) }
-            } catch {
-                print("Failed to decode json:", error)
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+
+            } catch let jsonErr {
+                print("Failed to decode json:", jsonErr)
             }
+                  
             
                         
         }.resume()
@@ -53,7 +61,7 @@ class AppsSearchController: UICollectionViewController, UICollectionViewDelegate
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return appResults.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
