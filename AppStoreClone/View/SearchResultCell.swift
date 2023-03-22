@@ -30,7 +30,7 @@ class SearchResultCell: UICollectionViewCell {
         return label
     }()
     
-    let downloadsLabel: UILabel = {
+    let ratingsLabel: UILabel = {
         let label = UILabel()
         label.text = "Total Downloads"
         return label
@@ -64,7 +64,7 @@ class SearchResultCell: UICollectionViewCell {
         backgroundColor = .white
         
         let labelStackView = VerticalStackView(arrangedSubviews: [
-            nameLabel, categoryLabel, downloadsLabel
+            nameLabel, categoryLabel, ratingsLabel
         ])
         
         let infoTopStackView = UIStackView(arrangedSubviews: [

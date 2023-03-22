@@ -16,12 +16,10 @@ class AppsSearchController: UICollectionViewController, UICollectionViewDelegate
         
         fetchItunesApps()
         collectionView.register(SearchResultCell.self, forCellWithReuseIdentifier: cellId)
-                
         
     }
     
     fileprivate var appResults = [Result]()
-     
     
     fileprivate func fetchItunesApps() {
         let urlString = "https://itunes.apple.com/search?term=instagram&entity=software"
@@ -36,7 +34,6 @@ class AppsSearchController: UICollectionViewController, UICollectionViewDelegate
             }
             
             // success
-            
             guard let data = data else { return }
             
             do {
@@ -46,13 +43,10 @@ class AppsSearchController: UICollectionViewController, UICollectionViewDelegate
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                 }
-
+                
             } catch let jsonErr {
                 print("Failed to decode json:", jsonErr)
             }
-                  
-            
-                        
         }.resume()
     }
     
@@ -67,6 +61,12 @@ class AppsSearchController: UICollectionViewController, UICollectionViewDelegate
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! SearchResultCell
         
+        let appResult = appResults[indexPath.item]
+        cell.nameLabel.text = appResult.trackName
+        cell.categoryLabel.text = appResult.primaryGenreName
+        cell.ratingsLabel.text = "0"
+        guard let userRating = appResult.averageUserRating else { return cell }
+        cell.ratingsLabel.text = "Rating: \(round(userRating * 10) / 10.0)"
         return cell
     }
     
