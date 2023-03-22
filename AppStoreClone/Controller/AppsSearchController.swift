@@ -53,6 +53,7 @@ class AppsSearchController: UICollectionViewController, UICollectionViewDelegate
         cell.ratingsLabel.text = "0"
         guard let userRating = appResult.averageUserRating else { return cell }
         cell.ratingsLabel.text = "Rating: \(round(userRating * 10) / 10.0)"
+        
         return cell
     }
     
