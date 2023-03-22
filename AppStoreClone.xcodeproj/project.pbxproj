@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		62A1D2DB29CAF8400001840E /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A1D2DA29CAF8400001840E /* SearchResult.swift */; };
 		62C29F1B29C9D0A5003A380A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C29F1A29C9D0A5003A380A /* AppDelegate.swift */; };
 		62C29F1D29C9D0A5003A380A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C29F1C29C9D0A5003A380A /* SceneDelegate.swift */; };
 		62C29F1F29C9D0A5003A380A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C29F1E29C9D0A5003A380A /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		62A1D2DA29CAF8400001840E /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		62C29F1729C9D0A5003A380A /* AppStoreClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStoreClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62C29F1A29C9D0A5003A380A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62C29F1C29C9D0A5003A380A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +47,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		62A1D2D929CAF8280001840E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				62A1D2DA29CAF8400001840E /* SearchResult.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		62C29F0E29C9D0A5003A380A = {
 			isa = PBXGroup;
 			children = (
@@ -64,6 +74,7 @@
 		62C29F1929C9D0A5003A380A /* AppStoreClone */ = {
 			isa = PBXGroup;
 			children = (
+				62A1D2D929CAF8280001840E /* Model */,
 				62C29F3629CA076A003A380A /* Helpers */,
 				62C29F3329C9FD94003A380A /* View */,
 				62C29F3029C9F945003A380A /* Controller */,
@@ -176,6 +187,7 @@
 			files = (
 				62C29F2F29C9D7ED003A380A /* BaseTabBarController.swift in Sources */,
 				62C29F1F29C9D0A5003A380A /* ViewController.swift in Sources */,
+				62A1D2DB29CAF8400001840E /* SearchResult.swift in Sources */,
 				62C29F1B29C9D0A5003A380A /* AppDelegate.swift in Sources */,
 				62C29F3229C9F97D003A380A /* AppsSearchController.swift in Sources */,
 				62C29F3529C9FDFA003A380A /* SearchResultCell.swift in Sources */,

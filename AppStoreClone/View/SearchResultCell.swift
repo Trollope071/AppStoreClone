@@ -54,7 +54,7 @@ class SearchResultCell: UICollectionViewCell {
     
     func createScreenshotImageView() -> UIImageView {
         let imageView = UIImageView()
-        imageView.backgroundColor = .blue
+        imageView.backgroundColor = .blue 
         return imageView
     }
     
