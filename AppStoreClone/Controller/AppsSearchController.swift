@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class AppsSearchController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
@@ -54,6 +55,18 @@ class AppsSearchController: UICollectionViewController, UICollectionViewDelegate
         guard let userRating = appResult.averageUserRating else { return cell }
         cell.ratingsLabel.text = "Rating: \(round(userRating * 10) / 10.0)"
         
+        let url = URL(string: appResult.artworkUrl100)
+        cell.appIconImageView.sd_setImage(with: url)
+        
+        cell.screenshot1ImageView.sd_setImage(with: URL(string: appResult.screenshotUrls[0]))
+        if appResult.screenshotUrls.count > 1 {
+            cell.screenshot2ImageView.sd_setImage(with: URL(string: appResult.screenshotUrls[1]))
+        }
+        if appResult.screenshotUrls.count > 2 {
+            cell.screenshot3ImageView.sd_setImage(with: URL(string: appResult.screenshotUrls[2]))
+        }
+        
+
         return cell
     }
     
