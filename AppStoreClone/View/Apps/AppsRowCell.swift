@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AppRowCell: UICollectionViewCell {
+class AppsRowCell: UICollectionViewCell {
     
     let imageView = UIImageView(cornerRadius: 8)
     
@@ -19,7 +19,7 @@ class AppRowCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .red
+        
         imageView.backgroundColor = .purple
         imageView.constrainWidth(constant: 64)
         imageView.constrainHeight(constant: 64)

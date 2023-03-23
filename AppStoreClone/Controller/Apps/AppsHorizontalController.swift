@@ -14,14 +14,14 @@ class AppsHorizontalController: BaseListController, UICollectionViewDelegateFlow
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.backgroundColor = .blue
-        collectionView.register(AppRowCell.self, forCellWithReuseIdentifier: cellId)
+        
+        collectionView.register(AppsRowCell.self, forCellWithReuseIdentifier: cellId)
         
         if let layout = collectionViewLayout as? UICollectionViewFlowLayout{
             layout.scrollDirection = .horizontal
         }
         
-        collectionView.showsHorizontalScrollIndicator = false
+        
         
     }
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
