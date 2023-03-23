@@ -16,20 +16,17 @@ class AppsSearchController: BaseListController, UICollectionViewDelegateFlowLayo
     
     fileprivate let searchController = UISearchController(searchResultsController: nil)
     
-    fileprivate let enterSearchTermLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Please enter search term above..."
-        label.font = UIFont.boldSystemFont(ofSize: 16)
-        return label
-    }()
+//    fileprivate let enterSearchTermLabel: UILabel = {
+//        let label = UILabel()
+//        label.font = UIFont.boldSystemFont(ofSize: 16)
+//        return label
+//    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collectionView.register(SearchResultCell.self, forCellWithReuseIdentifier: cellId)
         
-        view.addSubview(enterSearchTermLabel)
-        enterSearchTermLabel.centerInSuperview()
         
         setupSearchBar()
         
@@ -82,7 +79,7 @@ class AppsSearchController: BaseListController, UICollectionViewDelegateFlowLayo
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        enterSearchTermLabel.isHidden = appResults.count != 0
+
         return appResults.count
     }
     
