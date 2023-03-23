@@ -35,20 +35,17 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
         
         dispatchGroup.enter()
         Service.shared.fetchTopPaid { appGroup, error in
-            print("Done with games")
             dispatchGroup.leave()
             group2 = appGroup
         }
         
         dispatchGroup.enter()
         Service.shared.fetchGamesFree { appGroup, err in
-            print("Done with top grossing")
             dispatchGroup.leave()
             group1 = appGroup
         }
         
         dispatchGroup.notify(queue: .main) {
-            print("completed your dispatch group tasks...")
             if let group = group1 {
                 self.groups.append(group)
             }
