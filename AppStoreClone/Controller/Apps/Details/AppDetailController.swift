@@ -26,6 +26,7 @@ class AppDetailController: BaseListController, UICollectionViewDelegateFlowLayou
     
     let detailCellId = "detailCellId"
     let previewCellId = "previewCellId"
+    let reviewCellId = "reviewCellId"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,11 +35,12 @@ class AppDetailController: BaseListController, UICollectionViewDelegateFlowLayou
         collectionView.register(AppDetailCell.self, forCellWithReuseIdentifier: detailCellId)
         navigationItem.largeTitleDisplayMode = .never
         collectionView.register(AppPreviewCell.self, forCellWithReuseIdentifier: previewCellId)
+        collectionView.register(AppReviewCell.self, forCellWithReuseIdentifier: reviewCellId)
         
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -53,6 +55,10 @@ class AppDetailController: BaseListController, UICollectionViewDelegateFlowLayou
             cell.horizontalController.app = self.app
             return cell
         }
+        if indexPath.item == 2 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reviewCellId, for: indexPath) as! AppReviewCell
+            return cell
+        }
         
         return UICollectionViewCell()
         
@@ -60,6 +66,7 @@ class AppDetailController: BaseListController, UICollectionViewDelegateFlowLayou
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
+        var height: CGFloat = 250
         if indexPath.item == 0 {
             let dummyCell = AppDetailCell(frame: .init(x: 0, y: 0, width: view.frame.width, height: 1000))
             dummyCell.app = app
@@ -68,10 +75,12 @@ class AppDetailController: BaseListController, UICollectionViewDelegateFlowLayou
             let estimatedSize = dummyCell.systemLayoutSizeFitting(.init(width: view.frame.width, height: 1000))
             
             return .init(width: view.frame.width, height: estimatedSize.height)
+        } else if indexPath.item == 1 {
+            height = 500
         } else {
-            return .init(width: view.frame.width, height: 500)
+            height = 250
         }
         
-        
+        return .init(width: view.frame.width, height: height)
     }
 }
