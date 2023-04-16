@@ -9,19 +9,18 @@ import UIKit
 
 class AppDetailController: BaseListController, UICollectionViewDelegateFlowLayout {
     
-    var appId: String! {
-        didSet {
-            print("appId: ", appId ?? "")
-            let urlString = "http://itunes.apple.com/lookup?id=\(appId ?? "")"
-            Service.shared.fetchGenericJSONData(urlString: urlString) { (result: SearchResult?, err) in
-                let app = result?.results.first
-                self.app = app
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
-            }
-        }
+    fileprivate let appId: String
+    
+    //dependency injection constructor
+    init(appId: String) {
+        self.appId = appId
+        super.init()
     }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     var app: Result?
     
@@ -38,6 +37,19 @@ class AppDetailController: BaseListController, UICollectionViewDelegateFlowLayou
         collectionView.register(AppPreviewCell.self, forCellWithReuseIdentifier: previewCellId)
         collectionView.register(AppReviewCell.self, forCellWithReuseIdentifier: reviewCellId)
         
+        fetchData()
+    }
+    
+    fileprivate func fetchData() {
+            print("appId: ", appId ?? "")
+            let urlString = "http://itunes.apple.com/lookup?id=\(appId ?? "")"
+            Service.shared.fetchGenericJSONData(urlString: urlString) { (result: SearchResult?, err) in
+                let app = result?.results.first
+                self.app = app
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            }
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

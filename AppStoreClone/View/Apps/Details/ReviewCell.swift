@@ -11,7 +11,6 @@ class ReviewCell: UICollectionViewCell {
     
     let titleLabel = UILabel(text: "Review Title", font: .boldSystemFont(ofSize: 16))
     let authorLabel = UILabel(text: "Author Title", font: .boldSystemFont(ofSize: 10))
-    let starsLabel = UILabel(text: "Stars", font: .boldSystemFont(ofSize: 10))
     let bodyLabel = UILabel(text: "Review Text\nReview Text\nReview Text", font: .systemFont(ofSize: 14), numberOfLines: 0)
     let starsStackView: UIStackView = {
         var arrangedSubviews = [UIView]()

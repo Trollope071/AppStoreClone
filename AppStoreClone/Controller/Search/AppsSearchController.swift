@@ -16,11 +16,17 @@ class AppsSearchController: BaseListController, UICollectionViewDelegateFlowLayo
     
     fileprivate let searchController = UISearchController(searchResultsController: nil)
     
-//    fileprivate let enterSearchTermLabel: UILabel = {
-//        let label = UILabel()
-//        label.font = UIFont.boldSystemFont(ofSize: 16)
-//        return label
-//    }()
+    fileprivate let enterSearchTermLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        return label
+    }()
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let appId = appResults[indexPath.item].trackId
+        let appDetailController = AppDetailController(appId: String(appId))
+        navigationController?.pushViewController(appDetailController, animated: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
