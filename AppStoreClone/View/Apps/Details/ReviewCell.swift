@@ -23,11 +23,14 @@ class ReviewCell: UICollectionViewCell {
         
         let stackView = VerticalStackView(arrangedSubviews: [
                 UIStackView(arrangedSubviews: [
-                    titleLabel, UIView(), authorLabel
+                    titleLabel, authorLabel
                 ]),
                 starsLabel,
                 bodyLabel
-        ], spacing: 12)
+        ], spacing: 8)
+        
+        titleLabel.setContentCompressionResistancePriority(.init(rawValue: 0), for: .horizontal)
+        authorLabel.textAlignment = .right
         addSubview(stackView)
         stackView.fillSuperview(padding: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20))
     }
