@@ -23,6 +23,40 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Test click")
+        
+        let redView = UIView()
+        redView.backgroundColor = .red
+        redView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleRemoveRedView)))
+        view.addSubview(redView)
+//        redView.frame = CGRect(x: 0, y: 0, width: 100, height: 200)
+        
+        guard let cell = collectionView.cellForItem(at: indexPath) else { return }
+        
+        guard let startingFrame = cell.superview?.convert(cell.frame, to: nil) else { return }
+        self.startingFrame = startingFrame
+        redView.frame = startingFrame
+        redView.layer.cornerRadius = 16
+        
+        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut) {
+            redView.frame = self.view.frame
+            
+        } completion: { _ in
+            
+        }
+
+    }
+    
+    var startingFrame: CGRect?
+    
+    @objc func handleRemoveRedView(gesture: UITapGestureRecognizer) {
+        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut) {
+            gesture.view?.frame = self.startingFrame ?? .zero
+        } completion: { _ in
+            gesture.view?.removeFromSuperview()
+        }
+
+        gesture.view?.removeFromSuperview()
+
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
