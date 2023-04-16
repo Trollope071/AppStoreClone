@@ -17,9 +17,8 @@ class BaseTabBarController: UITabBarController {
         tabBar.backgroundColor = .white
         
         viewControllers = [
+            createNavController(viewController: TodayController(), title: "Сегодня", imageName: "today_icon"),
             createNavController(viewController: AppsPageController(), title: "Приложения", imageName: "apps"),
-            createNavController(viewController: UIViewController(), title: "Сегодня", imageName: "today_icon"),
-            
             createNavController(viewController: AppsSearchController(), title: "Поиск", imageName: "search")
         ]
         
