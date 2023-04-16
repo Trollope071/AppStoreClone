@@ -11,7 +11,6 @@ class AppDetailController: BaseListController, UICollectionViewDelegateFlowLayou
     
     var appId: String! {
         didSet {
-            print("Here is my appId:", appId)
             let urlString = "http://itunes.apple.com/lookup?id=\(appId ?? "")"
             Service.shared.fetchGenericJSONData(urlString: urlString) { (result: SearchResult?, err) in
                 let app = result?.results.first
@@ -51,6 +50,7 @@ class AppDetailController: BaseListController, UICollectionViewDelegateFlowLayou
         }
         if indexPath.item == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: previewCellId, for: indexPath) as! AppPreviewCell
+            cell.horizontalController.app = self.app
             return cell
         }
         
