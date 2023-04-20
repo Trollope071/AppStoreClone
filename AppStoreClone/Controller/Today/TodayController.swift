@@ -11,6 +11,10 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
     
     fileprivate let cellId = "cellId"
     
+    let items = [
+        TodayItem.init(category: "finibus fermentum", title: "Nam ut justo accumsan", image: UIImage(named: "star.fill") ?? UIImage(), description: "bibendum neque a, faucibus quam. Ut finibus arcu in imperdiet maximus. ", backgroundColor: .white),
+        TodayItem.init(category: "Mauris malesuada libero odio", title: "Curabitur quis mauris", image: UIImage(named: "today_icon") ?? UIImage(), description: "bibendum neque a, faucibus quam. Ut finibus arcu in imperdiet maximus. ", backgroundColor: UIColor(red: 0.98, green: 0.96, blue: 0.73, alpha: 1.00))
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +36,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         print("Test click")
         
         let appFullscreenController = AppFullscreenController()
+        appFullscreenController.todayItem = items[indexPath.row]
         appFullscreenController.dismissHandler = {
             self.handleRemoveRedView()
         }
@@ -107,11 +112,12 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return items.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! TodayCell
+        cell.todayItem = items[indexPath.item]
         return cell
     }
     
