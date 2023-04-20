@@ -21,16 +21,20 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         collectionView.register(TodayCell.self, forCellWithReuseIdentifier: cellId)
     }
     
+    var appFullscreenController = AppFullscreenController()
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Test click")
         
-        let yellowController = UIViewController()
-        yellowController.view.backgroundColor = .yellow
+        let appFullscreenController = AppFullscreenController()
         
-        
-        let redView = yellowController.view!
+        let redView = appFullscreenController.view!
         redView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleRemoveRedView)))
         view.addSubview(redView)
+        
+        addChild(appFullscreenController)
+        
+        self.appFullscreenController = appFullscreenController
         
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
         
@@ -63,6 +67,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         }
 
         gesture.view?.removeFromSuperview()
+        self.appFullscreenController.removeFromParent()
 
     }
     
