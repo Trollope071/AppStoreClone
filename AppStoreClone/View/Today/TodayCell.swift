@@ -9,6 +9,8 @@ import UIKit
 
 class TodayCell: UICollectionViewCell {
     
+    let categoryLabel = UILabel(text: "Lorem ipsum", font: <#T##UIFont#>)
+    
     let imageView = UIImageView(image: UIImage(named: "bird"))
     
     override init(frame: CGRect) {
