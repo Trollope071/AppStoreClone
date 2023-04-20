@@ -24,22 +24,26 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Test click")
         
-        let redView = UIView()
-        redView.backgroundColor = .red
+        let yellowController = UIViewController()
+        yellowController.view.backgroundColor = .yellow
+        
+        
+        let redView = yellowController.view!
         redView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleRemoveRedView)))
         view.addSubview(redView)
-//        redView.frame = CGRect(x: 0, y: 0, width: 100, height: 200)
         
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
         
         guard let startingFrame = cell.superview?.convert(cell.frame, to: nil) else { return }
         self.startingFrame = startingFrame
+        
         redView.frame = startingFrame
         redView.layer.cornerRadius = 16
         
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut) {
             redView.frame = self.view.frame
             
+            self.tabBarController?.tabBar.frame.origin.y = self.view.frame.size.height
         } completion: { _ in
             
         }
@@ -51,6 +55,9 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
     @objc func handleRemoveRedView(gesture: UITapGestureRecognizer) {
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut) {
             gesture.view?.frame = self.startingFrame ?? .zero
+            if let tabBarFrame = self.tabBarController?.tabBar.frame {
+                self.tabBarController?.tabBar.frame.origin.y = self.view.frame.size.height - tabBarFrame.height
+              }
         } completion: { _ in
             gesture.view?.removeFromSuperview()
         }
